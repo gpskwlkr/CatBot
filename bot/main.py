@@ -25,11 +25,8 @@ them at all, please, forgive me for that and enter the command one more time :c 
         bot.send_message(chat_id=update.message.chat_id, text="Looking for some cat pictures...")
         sleep(3)
         bot.send_message(chat_id=update.message.chat_id, text="Here's what I found! Look at this!")
-        try:
-            bot.send_photo(chat_id=update.message.chat_id, photo=parse.p.parse())
-        except:
-            sleep(3)
-            bot.send_photo(chat_id=update.message.chat_id, photo=parse.p.parse())
+        bot.send_photo(chat_id=update.message.chat_id, photo=parse.p.parse())
+
     def main(self):
         '''
         This is where all magic happens.
