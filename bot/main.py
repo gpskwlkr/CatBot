@@ -7,7 +7,7 @@ class Bot:
         '''
         Creating all the required stuff after initialization.
         '''
-        self.updater = Updater(token='621926900:AAFmSmFm6HFftaiiQpHz_X9hYzp2XPLJVQA')
+        self.updater = Updater(token='token')
         self.dispatcher = self.updater.dispatcher
 
     @staticmethod
@@ -25,11 +25,8 @@ them at all, please, forgive me for that and enter the command one more time :c 
         bot.send_message(chat_id=update.message.chat_id, text="Looking for some cat pictures...")
         sleep(3)
         bot.send_message(chat_id=update.message.chat_id, text="Here's what I found! Look at this!")
-        try:
-            bot.send_photo(chat_id=update.message.chat_id, photo=parse.p.parse())
-        except:
-            sleep(3)
-            bot.send_photo(chat_id=update.message.chat_id, photo=parse.p.parse())
+        bot.send_photo(chat_id=update.message.chat_id, photo=parse.p.parse())
+
     def main(self):
         '''
         This is where all magic happens.
