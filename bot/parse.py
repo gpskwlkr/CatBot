@@ -7,7 +7,7 @@ images = []
 class Parser:
 
     def __init__(self):
-        self.client = pytumblr.TumblrRestClient('FbN5lcuIgVLrkbEqDPzPSPN3HtkoIhHrWpOetwMbFmUgQDlc6q')
+        self.client = pytumblr.TumblrRestClient('token')
 
     def parse(self):
         '''
