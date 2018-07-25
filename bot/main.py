@@ -7,7 +7,7 @@ class Bot:
         '''
         Creating all the required stuff after initialization.
         '''
-        self.updater = Updater(token='token')
+        self.updater = Updater(token='547495324:AAFW1sSzG3F1I54GzzZFmnFHwjgoSdVYVmc')
         self.dispatcher = self.updater.dispatcher
 
     @staticmethod
