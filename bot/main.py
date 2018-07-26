@@ -93,7 +93,6 @@ Shh.. there's a secret command, an easter egg, tip : my creator.''', use_aliases
         self.dispatcher.add_handler(CommandHandler('creator', self.creator))
         self.dispatcher.add_handler(CommandHandler('help', self.help))
         self.dispatcher.add_handler(MessageHandler(Filters.command, self.unknown))
-        self.dispatcher.add_handler(MessageHandler(Filters.all, self.unknown))
         self.dispatcher.add_error_handler(self.error)
         self.updater.start_polling()
 
