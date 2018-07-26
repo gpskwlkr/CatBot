@@ -48,6 +48,7 @@ for that and enter the command one more time :crying_cat_face: ( I'm in test mod
         update.message.reply_text(emojize("Here's what I found! Look at this :purple_heart:! "))
         try:
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("cat"))
+
         except KeyError:
             self.error_msg(bot, update)
 
@@ -94,6 +95,7 @@ Shh.. there's a secret command, an easter egg, tip : my creator.''', use_aliases
         self.dispatcher.add_handler(CommandHandler('creator', self.creator))
         self.dispatcher.add_handler(CommandHandler('help', self.help))
         self.dispatcher.add_handler(MessageHandler(Filters.command, self.unknown))
+        self.dispatcher.add_handler(MessageHandler(Filters.all, self.unknown))
         self.dispatcher.add_error_handler(self.error)
         self.updater.start_polling()
 
