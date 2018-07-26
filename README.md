@@ -8,11 +8,13 @@ What's Done:
 
 1. /start command.
 2. /cat command which parses random pictures from Tumblr via API.
+3. /help command
+4. /creator command
+5. Wrong command recognition
 
 Todo:
 
-1. /help command.
-2. Text recognition.
-3. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
+1. Text recognition
+2. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
 
 Tokens leaked suddenly , but already fixed that :D (they're changed :p)

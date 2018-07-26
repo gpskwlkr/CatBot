@@ -1,13 +1,14 @@
 import pytumblr
 from random import randint, shuffle
 
-images = []
-
 
 class Parser:
 
     def __init__(self):
-        self.client = pytumblr.TumblrRestClient('WN7DRlwyacgfwxbPzuFHz9uvkRUOt4I15pffAtfpOoekrJHvCc')
+        self.client = pytumblr.TumblrRestClient('token')
+        self.nums = [i for i in range(0, 20)]
+        self.length = len(self.nums)
+        self.images = []
 
     def parse(self):
         '''
@@ -17,21 +18,20 @@ class Parser:
         '''
         Trying to avoid repeating images.
         '''
+        shuffle(self.nums)
+        if len(self.images) > 5:
+            self.images.clear()
 
-        postnums = [i for i in range(0, 20)]
-        shuffle(postnums)
-        if len(images) >= 5:
-            images.clear()
+        img = self.client.tagged('cat', limit=20)[self.nums[randint(1, self.length - 1)]]\
+            ['photos'][0]['original_size']['url']
 
-        img = self.client.tagged('cat', limit=20)[postnums[randint(1, len(postnums)-1)]]['photos'][0]['original_size']['url']
+        print(self.images)  # Debug
 
-        print(images)  # Debug
-
-        if img not in images:  # If it's not in the latest images list -> Save it, and send to user
-            images.append(img)
+        if img not in self.images:  # If it's not in the latest images list -> Save it, and send to user
+            self.images.append(img)
             return img
         else:
-            return self.client.tagged('cat', limit=20)[postnums[randint(1, len(postnums) + 1 )]]['photos'][0]['original_size']['url']
+            return self.client.tagged('cat', limit=20)[self.nums[randint(1, self.length + 1)]]['photos'][0]['original_size']['url']
 
 
 p = Parser()
