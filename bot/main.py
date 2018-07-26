@@ -78,7 +78,7 @@ Shh.. there's a secret command, an easter egg, tip : my Creator.''', use_aliases
 
     @staticmethod
     def unknown(bot, update):
-        update.message.reply_text("Sorry, I can't understand you. List of all commands I know - /help")
+        update.message.reply_text(emojize("I'm a little kitten yet, I don't know so much :crying_cat_face: . List of all commands I know - /help"))
 
     def main(self):
         """This is where all magic happens"""
