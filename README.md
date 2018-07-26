@@ -11,6 +11,7 @@ What's Done:
 3. /help command
 4. /creator command
 5. Wrong command recognition
+6. Secret command
 
 Todo:
 

@@ -27,21 +27,34 @@ for that and enter the command one more time :crying_cat_face: ( I'm in test mod
 
     @staticmethod
     def cat(bot, update):
+        print(update.message.from_user.first_name)
         update.message.reply_text(emojize("Looking for some cat pictures... :speech_balloon:"))
         sleep(3)
         update.message.reply_text(emojize("Here's what I found! Look at this :purple_heart:! "))
-        bot.send_photo(chat_id=update.message.chat_id, photo=p.parse())
+        try:
+            bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("cat"))
+        except KeyError:
+            bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
 
     @staticmethod
     def creator(bot, update):
         update.message.reply_text(emojize('''I'm a CatBot, created by @gpskwlkr :panda_face:.
 I love cats very much  ^~^
-Contact with my Creator via FaceBook - https://www.facebook.com/gpskwlkr.
+Contact my Creator via FaceBook - https://www.facebook.com/gpskwlkr.
 Or Vk - https://vk.com/gpskwlkr.
 Or as I've already mentioned, Telegram - @gpskwlkr.
-If you got any advises what else I need, or you spotted any problem - talk with him.
-I'm open source, what means you can see my soul here:
+If you have any ideas what else I need, or you spotted any problem - talk to him.
+I'm open source, which means you can see my soul here:
 https://github.com/gpskwlkr/CatBot :octopus:'''))
+
+    @staticmethod
+    def panda(bot, update):
+        print("PANDA FOUND BY - %s " % update.message.from_user.first_name)
+        update.message.reply_text("Wow, how did you know that command? It's a secret! Tell no one! Here's your reward!")
+        try:
+            bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("panda"))
+        except KeyError:
+            bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
 
     @staticmethod
     def help(bot, update):
@@ -49,12 +62,14 @@ https://github.com/gpskwlkr/CatBot :octopus:'''))
 /start - We can start everything from scratch.
 /cat - I'll find random cat picture for you :heart_eyes_cat:.
 /creator - I'll give you information about my Creator :panda_face:.
-/help - I'll give you a list of all commands.''', use_aliases=True))
+/help - I'll give you a list of all commands.
+Shh.. there's a secret command, an easter egg, tip : my Creator.''', use_aliases=True))
 
     @staticmethod
     def error(bot, update, error):
         """If we got any error - log it then. We have to deal with it."""
         logger.warning("Update '%s' caused '%s' error" % (update, error))
+        bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
 
     @staticmethod
     def unknown(bot, update):
@@ -65,6 +80,7 @@ https://github.com/gpskwlkr/CatBot :octopus:'''))
         print("Bot started working.")  # Debug
         self.dispatcher.add_handler(CommandHandler('start', self.start))
         self.dispatcher.add_handler(CommandHandler('cat', self.cat))
+        self.dispatcher.add_handler(CommandHandler('panda', self.panda))
         self.dispatcher.add_handler(CommandHandler('creator', self.creator))
         self.dispatcher.add_handler(CommandHandler('help', self.help))
         self.dispatcher.add_handler(MessageHandler(Filters.command, self.unknown))

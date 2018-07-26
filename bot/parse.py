@@ -10,28 +10,28 @@ class Parser:
         self.length = len(self.nums)
         self.images = []
 
-    def parse(self):
-        '''
-        Many of these are just things needed for debug that'll be deleted after the bot is done.
-        '''
+    def parse(self, animal):
+        """Many of these are just things needed for debug that'll be deleted after the bot is done."""
 
         '''
         Trying to avoid repeating images.
         '''
         shuffle(self.nums)
+        randnum = randint(1, self.length)
+        print("randnum -%s  "% (randnum))
+        img = self.client.tagged(animal, limit=20)[self.nums[randnum]]['photos'][0]['original_size']['url']\
+            if randnum < 20 else self.parse(animal)
+
+        print(img)
+
         if len(self.images) > 5:
             self.images.clear()
-
-        img = self.client.tagged('cat', limit=20)[self.nums[randint(1, self.length - 1)]]\
-            ['photos'][0]['original_size']['url']
-
-        print(self.images)  # Debug
 
         if img not in self.images:  # If it's not in the latest images list -> Save it, and send to user
             self.images.append(img)
             return img
         else:
-            return self.client.tagged('cat', limit=20)[self.nums[randint(1, self.length + 1)]]['photos'][0]['original_size']['url']
+            self.parse(animal)
 
 
 p = Parser()
