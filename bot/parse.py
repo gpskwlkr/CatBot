@@ -18,7 +18,7 @@ class Parser:
         '''
         shuffle(self.nums)
         randnum = randint(1, self.length)
-        print("randnum -%s  "% (randnum))
+        print("randnum -%s  "% (randnum))  # Debug
         img = self.client.tagged(animal, limit=20)[self.nums[randnum]]['photos'][0]['original_size']['url']\
             if randnum < 20 else self.parse(animal)
 
