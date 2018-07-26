@@ -18,6 +18,7 @@ What's Done:
 Todo:
 
 1. Database for phrases
-2. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
+2. Text recognition
+3. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
 
 Tokens leaked suddenly , but already fixed that :D (they're changed :p)
