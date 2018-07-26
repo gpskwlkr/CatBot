@@ -19,7 +19,7 @@ class Bot:
 
     @staticmethod
     def start(bot, update):
-        """Just a test method to be edited in future."""
+        """Greetings"""
         update.message.reply_text("Hello, {}. I'm a CatBot. I can send you cat pictures if you enter /cat".format(update.message.from_user.first_name))
         update.message.reply_text(emojize("Sometimes I'm sending same pictures, or not sending them at all, please, forgive me\
 for that and enter the command one more time :crying_cat_face: ( I'm in test mode yet )"))
@@ -47,6 +47,9 @@ If you have any ideas what else I need, or you spotted any problem - talk to him
 I'm open source, which means you can see my soul here:
 https://github.com/gpskwlkr/CatBot :octopus:'''))
 
+    '''
+    Easter egg command section begin ( don't look if you want to find it yourself ).
+    '''
     @staticmethod
     def panda(bot, update):
         print("PANDA FOUND BY - %s " % update.message.from_user.first_name)
@@ -55,7 +58,9 @@ https://github.com/gpskwlkr/CatBot :octopus:'''))
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("panda"))
         except KeyError:
             bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
-
+     '''
+     Easter egg command section end.
+     '''
     @staticmethod
     def help(bot, update):
         update.message.reply_text(emojize('''Available commands:
