@@ -3,6 +3,7 @@ from time import sleep
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from emoji import emojize
 from parse import p
+from database import d
 
 # Enabling logging
 
@@ -16,44 +17,43 @@ class Bot:
         """Creating all the required stuff after initialization."""
         self.updater = Updater(token='token')
         self.dispatcher = self.updater.dispatcher
-
+    
     @staticmethod
     def error_msg(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
         bot.send_message(chat_id=320381083, text="Hey, something happened there...")
-
+    
     def error(self, bot, update, error):
         """If we got any error - log it then. We have to deal with it."""
         logger.warning("Update '%s' caused '%s' error" % (update, error))
         self.error_msg(bot, update)
-
+    
     @staticmethod
     def unknown(bot, update):
-        update.message.reply_text(emojize(
-            "I'm a little kitten yet, I don't know so much :crying_cat_face: . List of all commands I know - /help"))
-
+        update.message.reply_text(emojize("I'm a little kitten yet, I don't know so much :crying_cat_face: . List of all commands I know - /help"))
+    
     @staticmethod
     def start(bot, update):
         """Just a test method to be edited in future."""
-        update.message.reply_text("Hello, {}. I'm a CatBot. I can send you cat pictures if you enter /cat".format(
-            update.message.from_user.first_name))
+        update.message.reply_text("{}, {}. I'm a CatBot. I can send you cat pictures if you enter /cat".format(d.phrase('start'),update.message.from_user.first_name))
         update.message.reply_text(emojize("Sometimes I'm sending same pictures, or not sending them at all, please, forgive me\
 for that and enter the command one more time :crying_cat_face: ( I'm in test mode yet )"))
         update.message.reply_text("To see all commands, use - /help\nInformation about creator - /creator")
-
+    
+    
     def cat(self, bot, update):
         print(update.message.from_user.username)
         print(update.message.chat_id)
         update.message.reply_text(emojize("Looking for some cat pictures... :speech_balloon:"))
         sleep(3)
-        update.message.reply_text(emojize("Here's what I found! Look at this :purple_heart:! "))
+        update.message.reply_text(emojize("{} :purple_heart:".format(d.phrase('cat'))))
         try:
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("cat"))
-
+            bot.send_message(chat_id=update.message.chat_id, text="Now let me rest 10 seconds, then I can send you one more pic")
         except KeyError:
             self.error_msg(bot, update)
 
-    @staticmethod
+@staticmethod
     def creator(bot, update):
         update.message.reply_text(emojize('''I'm a CatBot, created by @gpskwlkr :panda_face:.
 I love cats very much  ^~^
@@ -64,21 +64,18 @@ Or as I've already mentioned, Telegram - @gpskwlkr.
 If you have any ideas what else I need, or you spotted any problem - talk to him.
 I'm open source, which means you can see my soul here:
 https://github.com/gpskwlkr/CatBot :octopus:'''))
-
-    '''
-    Secret command section beginning, you can find it yourself and not read it here :p
-    '''
+    
+    
     def panda(self, bot, update):
         print("PANDA FOUND BY - %s " % update.message.from_user.username)
         update.message.reply_text("Wow, how did you know that command? It's a secret! Tell no one! Here's your reward!")
         try:
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("panda"))
+            bot.send_message(chat_id=update.message.chat_id, text="Now let me rest 10 seconds, then I can send you one more pic")
         except KeyError:
             self.error_msg(bot, update)
-    '''
-    Secret command section end.
-    '''
-    @staticmethod
+
+@staticmethod
     def help(bot, update):
         update.message.reply_text(emojize('''Available commands:
 /start - We can start everything from scratch.
@@ -86,7 +83,7 @@ https://github.com/gpskwlkr/CatBot :octopus:'''))
 /creator - I'll give you information about my creator :panda_face:.
 /help - I'll give you a list of all commands.
 Shh.. there's a secret command, an easter egg, tip : my creator.''', use_aliases=True))
-
+    
     def main(self):
         """This is where all magic happens"""
         print("Bot started working.")  # Debug
@@ -104,3 +101,5 @@ Shh.. there's a secret command, an easter egg, tip : my creator.''', use_aliases
 CatBot = Bot()
 if __name__ == '__main__':
     CatBot.main()
+
+
