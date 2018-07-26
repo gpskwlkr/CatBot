@@ -15,10 +15,10 @@ What's Done:
 5. Wrong command recognition - get a message if your command is wrong, so it's not recognised
 6. Secret command - you have to guess :p
 7. Text recognition
+8. Phrases database
 
 Todo:
 
-1. Database for phrases
-2. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
+1. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
 
 Tokens leaked suddenly , but already fixed that :D (they're changed :p)
