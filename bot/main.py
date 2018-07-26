@@ -18,7 +18,7 @@ class Bot:
         self.dispatcher = self.updater.dispatcher
 
     @staticmethod
-    def errormsg(bot, update):
+    def error_msg(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
 
     @staticmethod
@@ -49,7 +49,7 @@ for that and enter the command one more time :crying_cat_face: ( I'm in test mod
         try:
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("cat"))
         except KeyError:
-            self.errormsg(bot, update)
+            self.error_msg(bot, update)
 
     @staticmethod
     def creator(bot, update):
@@ -63,14 +63,19 @@ If you have any ideas what else I need, or you spotted any problem - talk to him
 I'm open source, which means you can see my soul here:
 https://github.com/gpskwlkr/CatBot :octopus:'''))
 
+    '''
+    Secret command section beginning, you can find it yourself and not read it here :p
+    '''
     def panda(self, bot, update):
         print("PANDA FOUND BY - %s " % update.message.from_user.username)
         update.message.reply_text("Wow, how did you know that command? It's a secret! Tell no one! Here's your reward!")
         try:
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("panda"))
         except KeyError:
-            self.errormsg(bot, update)
-
+            self.error_msg(bot, update)
+    '''
+    Secret command section end.
+    '''
     @staticmethod
     def help(bot, update):
         update.message.reply_text(emojize('''Available commands:
