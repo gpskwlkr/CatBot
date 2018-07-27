@@ -21,7 +21,6 @@ class Bot:
     @staticmethod
     def error_msg(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text="Oops.. there was an error, please try again.")
-        bot.send_message(chat_id=320381083, text="Hey, something happened there...")
     
     def error(self, bot, update, error):
         """If we got any error - log it then. We have to deal with it."""
@@ -100,5 +99,4 @@ Shh.. there's a secret command, an easter egg, tip : my creator.''', use_aliases
 CatBot = Bot()
 if __name__ == '__main__':
     CatBot.main()
-
 
