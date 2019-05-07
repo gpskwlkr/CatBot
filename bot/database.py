@@ -1,9 +1,9 @@
 import sqlite3
 from random import shuffle, randint
 
-class database:
+class Database:
     def __init__(self):
-        self.connection = sqlite3.connect('phrases.db')
+        self.connection = sqlite3.connect('bot/phrases.db')
         self.cursor = self.connection.cursor()
         self.greeting = [g for row in self.cursor.execute("SELECT DISTINCT greetings FROM phrases") for g in row if len(g) > 1]
         self.cat_phrases = [c for row in self.cursor.execute("SELECT DISTINCT cat FROM phrases") for c in row if len(c) > 1]
@@ -22,4 +22,4 @@ class database:
         else:
             return self.cat_phrases[index]
 
-d = database()
+d = Database()
