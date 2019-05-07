@@ -1,38 +1,27 @@
-import pytumblr
-from random import randint, shuffle
+import requests
+from bs4 import BeautifulSoup
+import json
+from random import sample
 
 
 class Parser:
     
     def __init__(self):
-        self.client = pytumblr.TumblrRestClient('token')
-        self.nums = [i for i in range(0, 20)]
-        self.length = len(self.nums)
-        self.images = []
-    
+        self.HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.96 Safari/537.36'}
+
+
     def parse(self, animal):
         """Choosing image & returning URL"""
         
-        '''
-        Trying to avoid repeating images.
-        '''
-        shuffle(self.nums)
-        randnum = randint(1, self.length)
-        print("randnum -%s  "% (randnum))
-        img = self.client.tagged(animal, limit=20)[self.nums[randnum]]['photos'][0]['original_size']['url']\
-            if randnum < 20 else self.parse(animal)
-        
-        print(img)
-        
-        if len(self.images) > 5:
-            self.images.clear()
-        
-        if img not in self.images:  # If it's not in the latest images list -> Save it, and send to user
-            self.images.append(img)
-            return img
-        else:
-            self.parse(animal)
+        url = "https://www.google.com/search?q={}&source=lnms&tbm=isch".format(animal)
+        s = requests.Session()
+        s.get('https://google.com', headers=self.HEADERS)
+        req = s.get(url, headers=self.HEADERS).content
+        soup = BeautifulSoup(req, "lxml")
 
+        a = json.loads([i.text for i in sample(soup.find_all('div', {'class':'rg_meta'}), 1)][0])["ou"]
+        
+        return a
 
 p = Parser()
 

@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class Bot:
     def __init__(self):
         """Creating all the required stuff after initialization."""
-        self.updater = Updater(token='token')
+        self.updater = Updater(token='547495324:AAFW1sSzG3F1I54GzzZFmnFHwjgoSdVYVmc')
         self.dispatcher = self.updater.dispatcher
     
     @staticmethod
@@ -48,17 +48,17 @@ for that and enter the command one more time :crying_cat_face: ( I'm in test mod
         update.message.reply_text(emojize("{} :purple_heart:".format(d.phrase('cat'))))
         try:
             bot.send_photo(chat_id=update.message.chat_id, photo=p.parse("cat"))
-            bot.send_message(chat_id=update.message.chat_id, text="Now let me rest 10 seconds, then I can send you one more pic")
         except KeyError:
             self.error_msg(bot, update)
 
-@staticmethod
+    @staticmethod
     def creator(bot, update):
         update.message.reply_text(emojize('''I'm a CatBot, created by @gpskwlkr :panda_face:.
 I love cats very much  ^~^
 Contact my creator via Facebook - https://www.facebook.com/gpskwlkr.
-Vk - https://vk.com/gpskwlkr.
+Vk - https://vk.com/gpskwlkr_main.
 Email - giorgianakidze@outlook.com
+Twitter - @import_sky
 Or as I've already mentioned, Telegram - @gpskwlkr.
 If you have any ideas what else I need, or you spotted any problem - talk to him.
 I'm open source, which means you can see my soul here:
@@ -74,7 +74,7 @@ https://github.com/gpskwlkr/CatBot :octopus:'''))
         except KeyError:
             self.error_msg(bot, update)
 
-@staticmethod
+    @staticmethod
     def help(bot, update):
         update.message.reply_text(emojize('''Available commands:
 /start - We can start everything from scratch.
