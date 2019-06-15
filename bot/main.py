@@ -59,7 +59,7 @@ Contact my creator via Facebook - https://www.facebook.com/gpskwlkr.
 Vk - https://vk.com/gpskwlkr_main.
 Email - giorgianakidze@outlook.com
 Twitter - @import_sky
-Or as I've already mentioned, Telegram - @gpskwlkr.
+Or as I've already mentioned, Telegram - @devtoss.
 If you have any ideas what else I need, or you spotted any problem - talk to him.
 I'm open source, which means you can see my soul here:
 https://github.com/gpskwlkr/CatBot :octopus:'''))
