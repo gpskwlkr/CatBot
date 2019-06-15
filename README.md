@@ -2,7 +2,7 @@
 
 # / Love cats and Python :3 /
 
-You can access it via t.me/Cat_Lover_bot or @Cat_Lover_bot directly in Telegram ^~^
+You can access it via https://t.me/Cat_Lover_bot or @Cat_Lover_bot directly in Telegram ^~^
 
 CatBot is an Open source simple Telegram bot that sends you random cat pics by your request. He does one more thing, but it's a secret, shh.. (check out /help for a hint).
 
