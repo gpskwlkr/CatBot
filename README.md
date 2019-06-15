@@ -19,4 +19,4 @@ What's Done:
 
 Todo:
 
-1. Any advises what to add ? You are welcome at @gpskwlkr / t.me/gpskwlkr
+1. Any advises what to add ? You are welcome at @devtoss / https://t.me/devtoss
