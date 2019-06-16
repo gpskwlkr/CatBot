@@ -53,13 +53,13 @@ for that and enter the command one more time :crying_cat_face: ( I'm in test mod
 
     @staticmethod
     def creator(bot, update):
-        update.message.reply_text(emojize('''I'm a CatBot, created by @devtoss :panda_face:.
+        update.message.reply_text(emojize('''I'm a CatBot, created by @gpskwlkr :panda_face:.
 I love cats very much  ^~^
 Contact my creator via Facebook - https://www.facebook.com/gpskwlkr.
 Vk - https://vk.com/gpskwlkr_main.
 Email - giorgianakidze@outlook.com
 Twitter - @import_sky
-Or as I've already mentioned, Telegram - @devtoss.
+Or as I've already mentioned, Telegram - @gpskwlkr.
 If you have any ideas what else I need, or you spotted any problem - talk to him.
 I'm open source, which means you can see my soul here:
 https://github.com/gpskwlkr/CatBot :octopus:'''))
