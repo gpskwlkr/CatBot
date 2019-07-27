@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class Bot:
     def __init__(self):
         """Creating all the required stuff after initialization."""
-        self.updater = Updater(token='547495324:AAFW1sSzG3F1I54GzzZFmnFHwjgoSdVYVmc')
+        self.updater = Updater(token='')
         self.dispatcher = self.updater.dispatcher
     
     @staticmethod
