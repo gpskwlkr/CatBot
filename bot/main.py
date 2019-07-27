@@ -35,8 +35,7 @@ class Bot:
     def start(bot, update):
         """Just a test method to be edited in future."""
         update.message.reply_text("{}, {}. I'm a CatBot. I can send you cat pictures if you enter /cat".format(d.phrase('start'),update.message.from_user.first_name))
-        update.message.reply_text(emojize("Sometimes I'm sending same pictures, or not sending them at all, please, forgive me\
-for that and enter the command one more time :crying_cat_face: ( I'm in test mode yet )"))
+        update.message.reply_text(emojize("Sometimes I'm sending same pictures, or not sending them at all, please, forgive me\ for that and enter the command one more time :crying_cat_face: ( I'm in test mode yet )"))
         update.message.reply_text("To see all commands, use - /help\nInformation about creator - /creator")
     
     
